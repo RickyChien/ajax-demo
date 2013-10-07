@@ -2,3 +2,20 @@ extends layout
 
 block content
   h1= title
+  div
+    table
+      thread
+        tr
+          th Data1
+          th Data2
+          th Data3
+          th Data4
+          th Data5
+          th Data6
+          th Data7
+      tbody
+        tr
+          each item in data
+            td= item
+    br
+    input(type='submit', value='Update!', onClick='document.location.reload(true)')

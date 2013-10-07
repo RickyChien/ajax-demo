@@ -3,37 +3,19 @@
  * GET gas information.
  */
 
-var http = require("http");
-var options = {
-  host: 'gas.goodlife.tw',
-  path: '/gas.json'
-};
+function genRandNum() {
+  return Math.floor(Math.random() * 90000) + 10000;
+}
 
-var getJSON = function(options, onResult) {
-  var req = http.request(options, function(res) {
-    var output = '';
-    console.log(options.host + ':' + res.statusCode);
-    res.setEncoding('utf8');
+exports.getGasPrice = function(req, res) {
+  var data = {},
+      i,
+      dataNum;
 
-    res.on('data', function (chunk) {
-      output += chunk;
-    });
+  for (i = 1;  i <= 7; i++) {
+    dataNum = 'data' + i;
+    data[dataNum] = genRandNum();
+  }
 
-    res.on('end', function() {
-      var data = JSON.parse(output);
-      onResult(res.statusCode, data);
-    });
-  });
-
-  req.on('error', function(err) {
-    res.send('error: ' + err.message);
-  });
-
-  req.end();
-};
-
-exports.getPrice = function(req, res) {
-  getJSON(options, function(statusCode, data) {
-    res.send(data);
-  });
+  return data;
 };
