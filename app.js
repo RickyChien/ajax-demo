@@ -32,7 +32,7 @@ if ('development' == app.get('env')) {
 
 app.get('/ajaxDemo', ajaxDemo.index);
 app.get('/noAjaxDemo', noAjaxDemo.index);
-app.get('/users', user.list);
+app.get('/users', user.fetchJSON);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

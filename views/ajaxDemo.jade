@@ -1,10 +1,11 @@
 extends layout
 
 block content
+  script(src='/js/common.js')
   // Page header
   div(class='page-header')
     h1 Ajax Demo
-      small   Fetch data without ajax
+      small   Fetch data with ajax
   // Carousel
   div(id='carousel-example-generic', class='carousel slide')
     // Indicators
@@ -49,10 +50,10 @@ block content
   // Pagination
   div(id='page')
     ul(class='pagination')
-      li(class=(pages.current == 1) ? 'disabled' : '')
-        a(href='noAjax?page=' + ((pages.current == 1) ? 1 : pages.current - 1)) &laquo;
+      li(class='disabled')
+        a(href='javascript:void(0)') &laquo;
       - for(var i = 1; i <= pages.total; ++i)
-          li(class=(pages.current == i) ? 'active' : '')
-            a(href='noAjax?page=' + i)= i
-      li(class=(pages.current == pages.total) ? 'disabled' : '')
-        a(href='noAjax?page=' + ((pages.current == pages.total) ? pages.total : pages.current + 1)) &raquo;
+          li(id='pageNumber', class=(pages.current == i) ? 'active' : '')
+            a(href='javascript:void(0)', onClick='getUserList(' + i + ', ' + pages.total + ')')= i
+      li
+        a(href='javascript:void(0)' onClick='getUserList(' + (pages.current + 1) + ')') &raquo;

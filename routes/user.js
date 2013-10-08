@@ -30,7 +30,9 @@ var users = [
   { firstName: 'Frederick', lastName: 'Chopin', ID: '28001104' },
   { firstName: 'Hector', lastName: 'Berlioz', ID: '08350013' },
   { firstName: 'George', lastName: 'Frederic', ID: '01560089' },
-  { firstName: 'Antonio', lastName: 'Vivaldi', ID: '19045650' }
+  { firstName: 'Antonio', lastName: 'Vivaldi', ID: '19045650' },
+  { firstName: 'Titanium', lastName: 'Guijo', ID: '17046640' },
+  { firstName: 'Candy', lastName: 'Crush', ID: '10152204' }
 ];
 
 exports.list = function(begin, end) {
@@ -39,4 +41,13 @@ exports.list = function(begin, end) {
 
 exports.count = function(limit) {
   return Math.floor(users.length / limit) + 1;
+}
+
+exports.fetchJSON = function(req, res) {
+  var page = req.query.page || 1,
+      limit = req.query.limit || 10,
+      begin = (page - 1) * 10,
+      end = (page - 1) * 10 + 10;
+      data = users.slice(begin, end);
+  res.send(data);
 }
