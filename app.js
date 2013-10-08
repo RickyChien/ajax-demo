@@ -4,7 +4,8 @@
  */
 
 var express = require('express');
-var noAjax = require('./routes/noAjax');
+var ajaxDemo = require('./routes/ajaxDemo');
+var noAjaxDemo = require('./routes/noAjaxDemo');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
@@ -29,7 +30,8 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/noAjax', noAjax.index);
+app.get('/ajaxDemo', ajaxDemo.index);
+app.get('/noAjaxDemo', noAjaxDemo.index);
 app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){

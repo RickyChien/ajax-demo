@@ -1,6 +1,6 @@
 
 /*
- * GET noAjax home page.
+ * GET non ajax demo home page.
  */
 
 var user = require("./user");
@@ -11,8 +11,9 @@ exports.index = function(req, res) {
       begin = (page - 1) * 10,
       end = (page - 1) * 10 + 10;
 
-  res.render('index', {
-    title: 'Users Information',
+  res.render('noAjaxDemo', {
+    title: 'AjaxDemo',
+    query: 'noAjaxDemo',
     pages: { current: parseInt(page), total: user.count(limit) },
     users: user.list(begin, end)
   });
