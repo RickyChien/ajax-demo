@@ -12,7 +12,7 @@ exports.index = function(req, res) {
       end = (page - 1) * 10 + 10;
 
   res.render('noAjaxDemo', {
-    title: 'AjaxDemo',
+    title: 'noAjaxDemo',
     query: 'noAjaxDemo',
     pages: { current: parseInt(page), total: user.count(limit) },
     users: user.list(begin, end)

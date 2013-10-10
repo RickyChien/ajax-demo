@@ -8,15 +8,13 @@ A simple website for demonstrate ajax.
 
 2. Download ajax-demo repository
 
-3. cd into ajax-demo directory
+3. Then cd into ajax-demo directory
 
         $ npm install
 
-4. launch server
+4. Launch server
 
         $ node app
-
-5. Open browser 
 
 ## AjaxDemo
 
