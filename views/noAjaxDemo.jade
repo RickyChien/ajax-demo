@@ -49,10 +49,18 @@ block content
   // Pagination
   div(id='page')
     ul(class='pagination')
-      li(class=(pages.current == 1) ? 'disabled' : '')
-        a(href= query + '?page=' + ((pages.current == 1) ? 1 : pages.current - 1)) &laquo;
+      if (pages.current == 1)
+        li(class='disabled')
+          a &laquo;
+      else
+        li
+          a(href= query + '?page=' + (pages.current - 1)) &laquo;
       - for(var i = 1; i <= pages.total; ++i)
           li(class=(pages.current == i) ? 'active' : '')
             a(href= query + '?page=' + i)= i
-      li(class=(pages.current == pages.total) ? 'disabled' : '')
-        a(href= query + '?page=' + ((pages.current == pages.total) ? pages.total : pages.current + 1)) &raquo;
+      if (pages.current == pages.total)
+        li(class='disabled')
+          a &raquo;
+      else
+        li
+          a(href= query + '?page=' + (pages.current + 1)) &raquo;
